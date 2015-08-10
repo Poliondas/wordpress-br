@@ -1,0 +1,9 @@
+{
+    "name": "poliondas/wordpress-br",
+    "version": "0.3",
+    "autoload": {
+        "psr-0": {
+            "NS_": "src"
+        }
+    }
+}
