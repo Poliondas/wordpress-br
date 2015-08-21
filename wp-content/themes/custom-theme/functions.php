@@ -36,13 +36,14 @@ $template_directory = get_template_directory();
 // require_once get_template_directory() . '/core/classes/class-contact-form.php';
 // require_once get_template_directory() . '/core/classes/class-post-form.php';
 // require_once get_template_directory() . '/core/classes/class-user-meta.php';
+
 require_once $template_directory . '/core/post-type.php';
 require_once $template_directory . '/core/post-type-banner.php';
 require_once $template_directory . '/core/taxonomy.php';
 
 require_once $template_directory . '/core/mk-helpers.php';
-require_once $template_directory . '/core/pages-metaboxes.php';
-require_once $template_directory . '/core/custom-pages-scripts.php';
+require_once $template_directory . '/core/pages-metabox.php';
+require_once $template_directory . '/core/custom-page-scripts.php';
 
 /**
  * Odin Widgets.
@@ -297,12 +298,6 @@ require_once $template_directory . '/inc/optimize.php';
  */
 require_once $template_directory . '/inc/template-tags.php';
 
-
-/**
- * Metabox for pages
- */
-require_once $template_directory . '/core/pages-metaboxes.php';
-
 /**
  * WooCommerce compatibility files.
  */
@@ -312,7 +307,6 @@ if ( is_woocommerce_activated() ) {
     require $template_directory . '/inc/woocommerce/functions.php';
     require $template_directory . '/inc/woocommerce/template-tags.php';
 }
-
 
 //- Adiciona a variável ajaxurl ao frontend
   add_action('wp_head','fixed_ajaxurl');
