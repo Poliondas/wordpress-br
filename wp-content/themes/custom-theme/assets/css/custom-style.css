@@ -1,0 +1,107 @@
+/**
+ * Media Query
+ */
+/**
+ * Paleta de Cores
+ */
+/**
+ * Font-family disponiveis
+ */
+/**
+ * Aplica os prefixos proprietarios
+ * @param  {String} $prop  [Propriedade (width, transition. border-radius, etc)]
+ * @param  {[type]} $value [valor da propriedade]
+ */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; }
+
+body {
+  overflow-x: hidden; }
+  body * {
+    color: #333;
+    position: relative;
+    font-family: "Lato";
+    font-size: 15px;
+    outline: none !important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box; }
+
+a {
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  text-decoration: none; }
+
+/**
+ * OWL Reset
+ */
+.owl-item, .owl-item .item, .owl-stage-outer, .owl-stage {
+  height: 100%;
+  width: 100%; }
+
+.owl-item {
+  background-image: url(../images/preloader.gif);
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.owl-controls {
+  position: absolute;
+  top: 50%;
+  width: 600px;
+  left: 50%;
+  margin-left: -300px;
+  z-index: 10; }
+  .owl-controls .owl-prev, .owl-controls .owl-next {
+    height: 29px;
+    position: absolute;
+    top: -32px;
+    width: 29px;
+    border-color: #000;
+    border-style: solid; }
+  .owl-controls .owl-prev {
+    left: 0;
+    border-width: 0 1px 1px 0;
+    -webkit-transform: rotateZ(135deg);
+    -moz-transform: rotateZ(135deg);
+    -o-transform: rotateZ(135deg);
+    -ms-transform: rotateZ(135deg);
+    transform: rotateZ(135deg); }
+  .owl-controls .owl-next {
+    right: 0;
+    border-width: 0 0 1px 1px;
+    -webkit-transform: rotateZ(-135deg);
+    -moz-transform: rotateZ(-135deg);
+    -o-transform: rotateZ(-135deg);
+    -ms-transform: rotateZ(-135deg);
+    transform: rotateZ(-135deg); }
+
+.float-center {
+  float: left;
+  text-align: center;
+  width: 100%; }
+
+.tb {
+  display: table;
+  vertical-align: middle; }
+  .tb.full {
+    width: 100%;
+    height: 100%; }
+  .tb .td {
+    display: table-cell;
+    vertical-align: middle; }
+    .tb .td.center {
+      text-align: center; }
+
+.page-manutencao .content {
+  background-image: url(../images/page-manutencao.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh; }
+  @media (max-width: 600px) {
+    .page-manutencao .content {
+      background-size: 80% auto; } }

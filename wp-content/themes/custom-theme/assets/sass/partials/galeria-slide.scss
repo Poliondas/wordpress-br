@@ -1,0 +1,138 @@
+// out: ../../css/galeria-slide.css
+
+@import "_setup";
+
+.galeria-slide{
+
+    height: 100vh;
+
+    .galeria-social{
+
+        height: 80px;
+        text-transform: uppercase;
+
+        .link{
+
+            border: solid 1px;
+            color: $color1;
+            display: inline-block;
+            font-size: 20px;
+            height: 30px;
+            line-height: 30px;
+            margin: 10px 15px;
+            text-align: center;
+            width: 30px;
+
+        }
+    }
+
+    .galeria-slider{
+
+        background-color: #f3f3f3;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 80px;
+
+        .item{
+
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+
+        }
+
+        .fancybox{
+
+            visibility: hidden;
+
+        }
+    }
+
+    .galeria-prev, .galeria-next{
+
+        background-color: #fff;
+        color: $color1;
+        cursor: pointer;
+        height: 60px;
+        margin-top: -30px;
+        overflow: hidden;
+        position: absolute;
+        top: 50%;
+        width: 80px;
+        z-index: 5;
+
+        @include vendor(transition, width 0.4s);
+
+        &:after{
+
+            content: ' ';
+            display: block;
+            height: 30px;
+            position: absolute;
+            top: 15px;
+            width: 30px;
+
+        }
+
+        &:hover{
+
+            width: 180px;
+
+        }
+
+        .page{
+
+            color: lighter($color1,1.2);
+            height: 60px;
+            line-height: 60px;
+            position: absolute;
+            text-align: center;
+            width: 100px;
+
+        }
+
+        @media($breakMWSmall){
+            display: none;
+        }
+
+    }
+    .galeria-prev{
+
+        left: 0;
+
+        &:after{
+
+            border-left: solid 1px;
+            border-top: solid 1px;
+            right: 15px;
+            @include vendor(transform, rotateZ(-45deg));
+
+        }
+
+        .page{
+
+            right: 60px;
+
+        }
+    }
+
+    .galeria-next{
+
+        right: 0;
+
+        &:after{
+
+            border-right: solid 1px;
+            border-top: solid 1px;
+            left: 15px;
+            @include vendor(transform, rotateZ(45deg));
+
+        }
+
+        .page{
+            left: 60px;
+        }
+    }
+}

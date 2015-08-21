@@ -1,0 +1,38 @@
+/**
+ * Media Query
+ */
+$breakMWXSmall: max-width#{':'} 400px;
+$breakMWSmall: max-width#{':'} 600px;
+$breakMWMedium: max-width#{':'} 800px;
+$breakMWLarge: max-width#{':'} 1000px;
+$breakMWXLarge: max-width#{':'} 1200px;
+$breakMHSmall: max-height#{':'} 600px;
+$breakMHXSmall: max-height#{':'} 400px;
+
+
+/**
+ * Paleta de Cores
+ */
+$color1: #333;
+$color2: #BBA473;
+
+/**
+ * Font-family disponiveis
+ */
+$fontFamily1: 'Merriweather';
+$fontFamily2: 'Lato';
+
+
+
+/**
+ * Aplica os prefixos proprietarios
+ * @param  {String} $prop  [Propriedade (width, transition. border-radius, etc)]
+ * @param  {[type]} $value [valor da propriedade]
+ */
+@mixin vendor($prop, $value) {
+  -webkit-#{$prop}: $value;
+     -moz-#{$prop}: $value;
+      -o-#{$prop}: $value;
+      -ms-#{$prop}: $value;
+          #{$prop}: $value;
+}

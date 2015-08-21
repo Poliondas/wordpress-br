@@ -1,0 +1,46 @@
+// out: ../css/custom-style.css
+
+@import "partials/_setup";
+@import "partials/_reset";
+@import "partials/owl_reset";
+//@import "partials/_bloco-video";
+
+
+.float-center{
+    float:left;
+    text-align: center;
+    width: 100%;
+}
+
+.tb{
+    display: table;
+    vertical-align: middle;
+
+    &.full{
+        width: 100%;
+        height:100%;
+    }
+
+    .td{
+        display: table-cell;
+        vertical-align: middle;
+
+        &.center{
+            text-align: center;
+        }
+    }
+}
+
+.page-manutencao{
+    .content{
+        background-image: url(../images/page-manutencao.png);
+        background-position: center;
+        background-repeat: no-repeat;
+
+        height: 100vh;
+
+        @media($breakMWSmall){
+            background-size: 80% auto;
+        }
+    }
+}

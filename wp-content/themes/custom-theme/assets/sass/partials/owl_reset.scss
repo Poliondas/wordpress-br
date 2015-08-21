@@ -1,0 +1,49 @@
+
+/**
+ * OWL Reset
+ */
+.owl-item, .owl-item .item, .owl-stage-outer, .owl-stage{
+    height: 100%;
+    width: 100%;
+}
+
+.owl-item{
+    background-image: url(../images/preloader.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.owl-controls{
+
+    position: absolute;
+    top: 50%;
+    width: 600px;
+    left: 50%;
+    margin-left: -300px;
+    z-index: 10;
+
+    .owl-prev, .owl-next{
+
+        height: 29px;
+        position: absolute;
+        top: -32px;
+        width: 29px;
+        border-color: #000;
+        border-style: solid;
+
+    }
+
+    .owl-prev{
+        left: 0;
+        border-width: 0 1px 1px 0;
+        @include vendor(transform, rotateZ(135deg));
+    }
+
+    .owl-next{
+        right: 0;
+        border-width: 0 0 1px 1px;
+        @include vendor(transform, rotateZ(-135deg));
+    }
+
+}

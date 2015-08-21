@@ -1,0 +1,74 @@
+/**
+ * Detalhes nos cantos TL e BR
+ */
+.border-corner{
+
+    vertical-align: middle;
+
+    &:before{
+        border-left: solid 1px $color1;
+        border-top: solid 1px $color1;
+        content: ' ';
+        display: block;
+        height: 8px;
+        left: -4px;
+        position: absolute;
+        top: -4px;
+        width: 8px;
+    }
+
+    &:after{
+        border-right: solid 1px $color1;
+        border-bottom: solid 1px $color1;
+        content: ' ';
+        display: block;
+        height: 8px;
+        right: -4px;
+        position: absolute;
+        bottom: -4px;
+        width: 8px;
+    }
+}
+
+/**
+ * Mesma altura da janela
+ */
+.vh{
+    height: 100vh;
+}
+
+
+/**
+ * Conteúdo apresentado como tabela, centralizado vertical e horiozontalmente
+ */
+.tb{
+    display: table;
+    vertical-align: middle;
+
+    &.full{
+        width: 100%;
+        height:100%;
+    }
+
+    .td{
+        display: table-cell;
+        vertical-align: middle;
+
+        &.center{
+            text-align: center;
+        }
+    }
+}
+
+/**
+ * Faixa de separação
+ */
+.faixa{
+
+    background-color: #fff;
+    float: left;
+    padding: 40px 0;
+    text-align: center;
+    width: 100%;
+
+}

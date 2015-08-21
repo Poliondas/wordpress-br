@@ -1,0 +1,101 @@
+.bloco-video{
+    float: left;
+    overflow: hidden;
+    width: 100%;
+    margin: 15px 0;
+
+    video{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+        object-position: center top;
+    }
+
+    .titulo{
+        font-family: $fontFamily2;
+        font-size: 30px;
+        font-weight: 300;
+        color: #fff;
+        display: inline-block;
+        &:after, &:before{
+            border-color: #fff;
+        }
+    }
+
+    .bt-play{
+
+        border-radius: 50%;
+        border: solid 1px #fff;
+        cursor: pointer;
+        height: 110px;
+        margin: 40px auto;
+        width: 110px;
+
+        .seta{
+            width: 1px;
+            height: 1px;
+            display: block;
+            border-left: solid 40px #fff;
+            border-top: solid 25px transparent;
+            border-bottom: solid 25px transparent;
+            left: 50%;
+            top: 25%;
+            margin-left: -15px;
+            position: absolute
+        }
+
+        &:hover{
+            background-color: rgba(255,255,255,0.2);
+            .seta{
+                border-left-color: $color2;
+            }
+        }
+    }
+
+    .bt-stop{
+
+        border-radius: 50%;
+        border: solid 1px #fff;
+        cursor: pointer;
+        height: 70px;
+        width: 70px;
+        position: absolute;
+        top: -120px;
+        right: 20px;
+
+        @include vendor(transition, all 0.4s);
+
+        .seta{
+            width: 40%;
+            height: 40%;
+            display: block;
+            left: 30%;
+            top: 30%;
+            position: absolute;
+            background-color: #fff;
+        }
+
+        &:hover{
+            background-color: rgba(255,255,255,0.2);
+            .seta{
+                background-color: $color2;
+            }
+        }
+
+    }
+
+    &.plaing{
+        .bt-stop{
+            top: 20px;
+        }
+        .bt-play{
+            display: none;
+        }
+        .titulo{
+            display: none;
+        }
+    }
+}

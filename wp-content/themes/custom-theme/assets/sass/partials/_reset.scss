@@ -1,0 +1,26 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body{
+    overflow-x: hidden;
+
+    *{
+        color: $color1;
+        position: relative;
+        font-family: $fontFamily2;
+        font-size: 15px;
+        outline: none !important;
+
+        @include vendor(box-sizing, border-box);
+    }
+}
+
+a{
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    text-decoration: none;
+}
