@@ -37,6 +37,8 @@ $template_directory = get_template_directory();
 // require_once get_template_directory() . '/core/classes/class-post-form.php';
 // require_once get_template_directory() . '/core/classes/class-user-meta.php';
 
+require_once $template_directory . '/core/auto-activate-plugins.php';
+
 require_once $template_directory . '/core/post-type.php';
 require_once $template_directory . '/core/post-type-banner.php';
 require_once $template_directory . '/core/taxonomy.php';
@@ -227,6 +229,7 @@ function odin_enqueue_scripts() {
 
     // Loads Odin main stylesheet.
     wp_enqueue_style( 'odin-style', get_stylesheet_uri(), array(), null, 'all' );
+    wp_enqueue_style( 'custom-style', $template_url . '/assets/css/custom-style.css', array(), null, 'all' );
 
     // jQuery.
     wp_enqueue_script( 'jquery' );
