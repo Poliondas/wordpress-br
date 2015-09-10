@@ -54,10 +54,59 @@ class PostType {
      * @param array $p
      * @return array
      */
-    protected function search($p = array()) {
+    protected function search($term = false) {
+        global $wpdb;
 
-        $term = isset($p['term']) ? $p['term'] : '';
-        $meta_query = isset($p['meta_query']) ? $p['meta_query'] : array();
+        if($term === false){
+            return array();
+        }
+        $searchL = "%".$term."%";
+
+        // Search in all custom fields
+        $post_ids_meta = $wpdb->get_col( $wpdb->prepare( "
+            SELECT DISTINCT post_id FROM {$wpdb->postmeta}
+            WHERE meta_value LIKE '%s'
+        ", $searchL ) );
+
+        // Search in post_title and post_content
+        $post_ids_post = $wpdb->get_col( $wpdb->prepare( "
+            SELECT DISTINCT ID FROM {$wpdb->posts}
+            WHERE post_title LIKE '%s'
+        ", $searchL ) );
+
+        $post_ids = array_merge( $post_ids_meta, $post_ids_post );
+
+        // /Query arguments
+        if(count($post_ids) > 0){
+            $args = $this->getArgs();
+            $args['post__in'] = $post_ids;
+
+            $query = new WP_Query($args);
+            return $this->createList( $query );
+        }else{
+            return array();
+        }
+
+    }
+
+    /**
+     * Constroi a lista de posts relacionados ao termo buscado.
+     * Consulta e insere os metas definidos no parâmetro $metabox
+     *
+     * @param array $p
+     * @return array
+     */
+    protected function customSearch($p = array()) {
+        if(!isset($p['term']) || $p['term'] === false){
+            return array();
+        }
+
+        if(!isset($p['meta_query'])){
+            return array();
+        }
+
+        $term = $p['term'];
+        $meta_query = $p['meta_query'];
         $filter = isset($p['filter']) ? $p['filter'] : array();
 
         $args = $this->getArgs($filter);
@@ -81,6 +130,7 @@ class PostType {
         } else {
             return $this->createList($q1);
         }
+
     }
 
     protected function createList($result) {
@@ -169,9 +219,9 @@ class PostType {
             'singular_name' => _x($s, 'Post Type Singular Name', 'text_domain'),
             'menu_name' => __($p, 'text_domain'),
             'name_admin_bar' => __($p, 'text_domain'),
-            'parent_item_colon' => __("$s pai", 'text_domain'),
-            'all_items' => __("Todos os {$p}", 'text_domain'),
-            'add_new_item' => __("Adicionar novo {$s}", 'text_domain'),
+            'parent_item_colon' => __('$s pai', 'text_domain'),
+            'all_items' => __('Todos os Banners', 'text_domain'),
+            'add_new_item' => __('Adicionar novo banner', 'text_domain'),
             'add_new' => __('Adicionar novo', 'text_domain'),
             'new_item' => __("Novo $s", 'text_domain'),
             'edit_item' => __("Editar $s", 'text_domain'),

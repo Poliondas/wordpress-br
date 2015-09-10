@@ -12,11 +12,18 @@ jQuery.expr[":"].inScreen = function(elem){
 }
 
 jQuery(document).ready(function($) {
+    var $window = $(window);
+
+    $window.on('resize',autoAjuste);
+    autoAjuste();
+
     // fitVids.
     $( '.entry-content' ).fitVids();
 
+
     // Responsive wp_video_shortcode().
     $( '.wp-video-shortcode' ).parent( 'div' ).css( 'width', 'auto' );
+
 
     /**
      * Odin Core shortcodes
@@ -32,6 +39,10 @@ jQuery(document).ready(function($) {
     $( '.odin-tooltip' ).tooltip();
 
 });
+
+function autoAjuste(){
+    //autoAjusteTextFit();
+};
 
 //----- Rola o site até uma posição específica
 function scrollBodyTo(scroll_to){
@@ -162,3 +173,42 @@ function handleAnimate(){
 
     }
 //----- FIM: shareFoto
+
+/**
+ * Ajusta o font-size para um melhor enquadramento
+ */
+function autoAjusteTextFit(){
+
+    $textFit = jQuery('.text-fit');
+    $textFit.each(function(i,e){
+        var i = 0;
+        var $text = jQuery(this);
+        var text = $text[0];
+        var fontSizeMax = $text.attr('text-fit-max');
+        var fontSizeMin = $text.attr('text-fit-min');
+
+        if(fontSizeMax === undefined){
+            fontSizeMax = 300;
+        }
+
+        if(fontSizeMin === undefined){
+            fontSizeMin = 12;
+        }
+
+        if(jQuery(window).width() <= 800){
+            fontSizeMin = 12;
+        }
+
+        $text.css({
+            'white-space':'nowrap',
+            'font-size': ''
+        });
+
+        while( (text.scrollWidth) > text.offsetWidth && i < fontSizeMax && fontSizeMax > fontSizeMin){
+            $text.css({'font-size': fontSizeMax+'px'});
+            fontSizeMax = fontSizeMax - 1;
+        }
+        $text.css({'white-space':''});
+    });
+
+}

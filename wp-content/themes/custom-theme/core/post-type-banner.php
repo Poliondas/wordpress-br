@@ -52,19 +52,23 @@ class PostTypeBanner extends PostType {
     }
 
     /**
-     * Retorna uma lista com os banners onitido a partir da consulta com os filtros
+     * Retorna uma lista com os banners obitido a partir da consulta com os filtros
      * @return array
      */
     public function searchByTerm($term = false) {
 
-        if($term === false){
-            return array();
-        }
-        
+        return parent::search($term);
+
+        /*
         $filter = array();
 
         $meta_query = array(
-            'relation' => 'OR',
+            'relation' => 'AND',
+            array(
+                'key' => 'mk_banner_bg_position',
+                'value' => 60,
+                'compare' => '>='
+            ),
             array(
                 'key' => 'mk_banner_link_texto',
                 'value' => $term,
@@ -72,14 +76,14 @@ class PostTypeBanner extends PostType {
             )
         );
 
-        $aBanners = parent::search(array(
+        $aBanners = parent::customSearch(array(
             'term' => $term,
             'meta_query' => $meta_query,
             'filter' => $filter,
         ));
 
         return $aBanners;
-
+        */
     }
 
     /**
